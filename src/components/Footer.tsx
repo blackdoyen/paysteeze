@@ -2,8 +2,15 @@ import React from 'react';
 import { Facebook, Instagram } from 'lucide-react';
 import { X } from 'lucide-react';
 
+const FloatingEffects = () => (
+  <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute -left-1/4 -top-1/4 w-1/2 h-1/2 bg-green-500/10 dark:bg-green-500/5 rounded-full blur-3xl animate-float" />
+    <div className="absolute -right-1/4 -bottom-1/4 w-1/2 h-1/2 bg-green-500/10 dark:bg-green-500/5 rounded-full blur-3xl animate-float-delayed" />
+  </div>
+);
+
 const GrainOverlay = () => (
-  <div className="pointer-events-none fixed inset-0 z-30 opacity-5">
+  <div className="pointer-events-none absolute inset-0 z-30 opacity-5">
     <div className="absolute h-full w-full">
       <div
         className="h-full w-full"
@@ -18,7 +25,9 @@ const GrainOverlay = () => (
 
 export function Footer() {
   return (
-    <footer className="bg-white/40 dark:bg-black/40 backdrop-blur-lg py-12 mt-20">
+    <footer className="relative bg-white/40 dark:bg-[#0c1317] backdrop-blur-lg py-12 mt-20">
+      <FloatingEffects />
+      <GrainOverlay />
       <div className="relative max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Brand Section */}
@@ -39,7 +48,7 @@ export function Footer() {
                 <li key={item}>
                   <a
                     href="#"
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-500 transition-colors duration-200"
                   >
                     {item}
                   </a>
@@ -56,7 +65,7 @@ export function Footer() {
                 <li key={item}>
                   <a
                     href="#"
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-500 transition-colors duration-200"
                   >
                     {item}
                   </a>
@@ -77,7 +86,7 @@ export function Footer() {
                 <a
                   key={label}
                   href="#"
-                  className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-all duration-200"
+                  className="text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-500 transition-all duration-200"
                   aria-label={label}
                 >
                   <Icon className="w-5 h-5" />
