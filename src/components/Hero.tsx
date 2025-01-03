@@ -15,7 +15,7 @@ export function Hero() {
           <div className="text-center lg:text-left lg:w-1/2 space-y-6">
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-green-500 dark:text-green-400 text-sm">
               <MessageCircle className="w-4 h-4 mr-2" />
-              <span>WhatsApp Powered Payments 💸</span>
+              <span>Seamless Payments With Whatsapp 💸</span>
             </div>
             
             <h1 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-blue-600 leading-tight">

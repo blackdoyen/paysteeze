@@ -1,53 +1,101 @@
 import React from 'react';
-import { Facebook, Twitter, Instagram, Send } from 'lucide-react';
+import { Facebook, Instagram } from 'lucide-react';
+import { X } from 'lucide-react';
+
+const GrainOverlay = () => (
+  <div className="pointer-events-none fixed inset-0 z-30 opacity-5">
+    <div className="absolute h-full w-full">
+      <div
+        className="h-full w-full"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+          filter: 'contrast(150%) brightness(120%)',
+        }}
+      />
+    </div>
+  </div>
+);
 
 export function Footer() {
   return (
-    <footer className="bg-black/40 backdrop-blur-lg py-12 mt-20">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h3 className="text-2xl font-bold mb-4 dark:text-white">PaySteeze</h3>
-            <p className="text-gray-600 dark:text-gray-300">
-              Revolutionizing money transfers through WhatsApp.
+    <footer className="bg-white/40 dark:bg-black/40 backdrop-blur-lg py-12 mt-20">
+      <div className="relative max-w-6xl mx-auto px-4 py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {/* Brand Section */}
+          <div className="col-span-2 md:col-span-1 space-y-3">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+              PaySteeze
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Send & Receive Money With WhatsApp.
             </p>
           </div>
-          <div>
-            <h4 className="font-semibold mb-4 dark:text-white">Quick Links</h4>
-            <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-              <li><a href="#" className="hover:text-green-500">About Us</a></li>
-              <li><a href="#" className="hover:text-green-500">Features</a></li>
-              <li><a href="#" className="hover:text-green-500">FAQ</a></li>
-              <li><a href="#" className="hover:text-green-500">Support</a></li>
+          
+          {/* Quick Links */}
+          <div className="space-y-4">
+            <h4 className="text-sm font-semibold text-gray-900 dark:text-white">Quick Links</h4>
+            <ul className="space-y-2">
+              {['About Us', 'Features', 'FAQ', 'Support'].map((item) => (
+                <li key={item}>
+                  <a
+                    href="#"
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
-          <div>
-            <h4 className="font-semibold mb-4 dark:text-white">Legal</h4>
-            <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-              <li><a href="#" className="hover:text-green-500">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-green-500">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-green-500">Security</a></li>
+
+          {/* Legal */}
+          <div className="space-y-4">
+            <h4 className="text-sm font-semibold text-gray-900 dark:text-white">Legal</h4>
+            <ul className="space-y-2">
+              {['Privacy Policy', 'Terms of Service', 'Security'].map((item) => (
+                <li key={item}>
+                  <a
+                    href="#"
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
-          <div>
-            <h4 className="font-semibold mb-4 dark:text-white">Connect</h4>
+
+          {/* Social */}
+          <div className="col-span-2 md:col-span-1 space-y-4">
+            <h4 className="text-sm font-semibold text-gray-900 dark:text-white">Connect</h4>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-600 hover:text-green-500 dark:text-gray-300">
-                <Facebook className="w-6 h-6" />
-              </a>
-              <a href="#" className="text-gray-600 hover:text-green-500 dark:text-gray-300">
-                <Twitter className="w-6 h-6" />
-              </a>
-              <a href="#" className="text-gray-600 hover:text-green-500 dark:text-gray-300">
-                <Instagram className="w-6 h-6" />
-              </a>
+              {[
+                { Icon: Facebook, label: 'Facebook' },
+                { Icon: X, label: 'X' },
+                { Icon: Instagram, label: 'Instagram' },
+              ].map(({ Icon, label }) => (
+                <a
+                  key={label}
+                  href="#"
+                  className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-all duration-200"
+                  aria-label={label}
+                >
+                  <Icon className="w-5 h-5" />
+                </a>
+              ))}
             </div>
           </div>
         </div>
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-600 dark:text-gray-300">
-          <p>© 2024 PaySteeze. All rights reserved.</p>
+
+        {/* Copyright */}
+        <div className="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800">
+          <p className="text-center text-xs text-gray-600 dark:text-gray-400">
+            © 2024 PaySteeze. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
   );
 }
+
+export default Footer;
